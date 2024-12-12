@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="renderer" content="webkit" />
+    <meta name="google" content="notranslate" />
+    <meta name="description" content="Tauri + React app" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
+    <title>bun-react-basis</title>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <div id="loading"></div>
+    <div id="lock"></div>
+    <div id="portal"></div>
+    <div id="cover"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <script>
+      console.log('client width -- ', document.documentElement.clientWidth);
+      console.log('client height -- ', document.documentElement.clientHeight);
+
+      /* rem字体自适应 */
+      (function (doc, win) {
+        var docEl = doc.documentElement;
+        var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+        function recalc () {
+          var clientWidth = docEl.clientWidth;
+          if (!clientWidth) return;
+
+          // iPad Mini以下的屏幕按照手机模式展示
+          // iPad Mini以上的屏幕按照PC模式展示
+          if (clientWidth <= 390) {
+            docEl.style.fontSize = '10px';
+          } else if (clientWidth > 390 && clientWidth <= 768) {
+            // docEl.style.fontSize = 15 * (clientWidth / 750) + 'px';
+            docEl.style.fontSize = '11px';
+          } else if (clientWidth > 768 && clientWidth <= 1920) {
+            // 2K以内分辨率
+            docEl.style.fontSize = '10px';
+          } else {
+            // 2K及以上分辨率
+            docEl.style.fontSize = '11px';
+          }
+        };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+      })(document, window);
+    </script>
+
+  </body>
+</html>

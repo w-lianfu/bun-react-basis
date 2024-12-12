@@ -1,0 +1,8 @@
+#+TITLE: bun-react-basis
+#+AUTHOR: h5lianfu
+#+DATE: 2024-12-12
+#+EMAIL: h5lianfu@gmail.com
+
+*** Start Development
+
++ `bun run dev`
