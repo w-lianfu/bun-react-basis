@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react';
 
+import './sass/index.scss';
+
 interface IProps {}
 interface IState {}
 
@@ -32,7 +34,7 @@ const App = (props: IProps, state: IState) => {
   return (
     <>
       <h1>------ bun-react-basis ------</h1>
-      <canvas ref={canvasRef} width="660" height="500"></canvas>
+      <canvas ref={canvasRef} width="660" height="500" />
     </>
   );
 };
